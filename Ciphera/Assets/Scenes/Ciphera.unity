@@ -240,6 +240,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de913df3680a2294ba0c4a08ebc8bbaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  optionSprites:
+  - {fileID: 2142893373678795169, guid: c15013f461b2269469b0cbcd12d16e37, type: 3}
+  - {fileID: -6696163737585504795, guid: 2601c1a8227f38743bfdf3215b3a7013, type: 3}
+  - {fileID: 4467212241933823735, guid: 199bdb07c97553b4390cfe6605954407, type: 3}
+  - {fileID: -6041618578912772655, guid: 1bb38851500d24d4695dd5c0176e5e96, type: 3}
   guessSlots:
   - {fileID: 2069916640}
   - {fileID: 1811656721}
