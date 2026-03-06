@@ -49,4 +49,40 @@ public class GameManager : MonoBehaviour
 
         currentSlot++;
     }
+
+    //Submit button
+    public void SubmitGuess()
+    {   
+        if (currentSlot < guessSlots.Length)
+        {
+            Debug.Log("Not enough objects placed!");
+            return;
+        }
+        Debug.Log("Checking guess");
+    }
+
+    //Delete button
+    public void DeleteGuess()
+    {   
+        if (currentSlot < guessSlots.Length)
+        {
+            Debug.Log("Not enough objects placed!");
+            return;
+        }
+        Debug.Log("Checking guess");
+    }
+
+    void Update()
+{
+    if (Input.GetKeyDown(KeyCode.Return))
+    {
+        SubmitGuess();
+    }
+
+    if (Input.GetKeyDown(KeyCode.Delete))
+    {
+        DeleteGuess();
+    }
+}
+
 }
