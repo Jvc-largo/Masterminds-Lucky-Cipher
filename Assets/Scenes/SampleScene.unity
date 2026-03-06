@@ -1224,7 +1224,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73352abc1832ca346a6948a3ce2ee6c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Collections.StimulusPresenterCollection
-  _stimulusPresenters: []
+  _stimulusPresenters:
+  - {fileID: 8630040517244018739}
+  - {fileID: 7387819566877532640}
+  - {fileID: 2845243858232944866}
+  - {fileID: 2176002650157458211}
+  - {fileID: 5073166590045706346}
+  - {fileID: 1530771769203447187}
 --- !u!4 &1523989239
 Transform:
   m_ObjectHideFlags: 0
@@ -1233,7 +1239,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1523989237}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1264,7 +1270,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070489821}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1335,7 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98677c0c50aff447b0d78144eef0d3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Behaviours.Trials.P300.SingleFlashTrialBehaviour
-  PresenterCollection: {fileID: 0}
+  PresenterCollection: {fileID: 1523989238}
   FlashesPerOption: 10
   OnTime: 0.1
   OffTime: 0.075
@@ -1449,13 +1455,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7004852504805478907, guid: 177bb3d68670f3044a7402517a7b9034, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1530771769203447188}
+    - targetCorrespondingSourceObject: {fileID: 7004852504805478907, guid: 177bb3d68670f3044a7402517a7b9034, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1530771769203447187}
   m_SourcePrefab: {fileID: 100100000, guid: 177bb3d68670f3044a7402517a7b9034, type: 3}
 --- !u!224 &1530771769203447185 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 185036067859695941, guid: 177bb3d68670f3044a7402517a7b9034, type: 3}
   m_PrefabInstance: {fileID: 1530771769203447184}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1530771769203447186 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7004852504805478907, guid: 177bb3d68670f3044a7402517a7b9034, type: 3}
+  m_PrefabInstance: {fileID: 1530771769203447184}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1530771769203447187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530771769203447186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ec7857c29061f41b799860fd810aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourToggleStimulusPresenter
+  _colourFlashBehaviour: {fileID: 1530771769203447188}
+--- !u!114 &1530771769203447188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1530771769203447186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af506a949d83d646b14ba0c7cb4ba3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourFlashBehaviour
+  _renderer: {fileID: 0}
+  OnColour: {r: 1, g: 0, b: 0, a: 1}
+  OffColour: {r: 1, g: 1, b: 1, a: 1}
+  TargetIndicationFlashPeriod: 0.2
+  TargetIndicationFlashCount: 3
+  SelectionFlashPeriod: 0.1
+  SelectionFlashCount: 5
 --- !u!1001 &2176002650157458208
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1551,13 +1600,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 584962393986259048, guid: 7946877305454cb4fa2c46155d810e8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2176002650157458212}
+    - targetCorrespondingSourceObject: {fileID: 584962393986259048, guid: 7946877305454cb4fa2c46155d810e8a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2176002650157458211}
   m_SourcePrefab: {fileID: 100100000, guid: 7946877305454cb4fa2c46155d810e8a, type: 3}
 --- !u!224 &2176002650157458209 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4579445756532373973, guid: 7946877305454cb4fa2c46155d810e8a, type: 3}
   m_PrefabInstance: {fileID: 2176002650157458208}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2176002650157458210 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 584962393986259048, guid: 7946877305454cb4fa2c46155d810e8a, type: 3}
+  m_PrefabInstance: {fileID: 2176002650157458208}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2176002650157458211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176002650157458210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ec7857c29061f41b799860fd810aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourToggleStimulusPresenter
+  _colourFlashBehaviour: {fileID: 2176002650157458212}
+--- !u!114 &2176002650157458212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2176002650157458210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af506a949d83d646b14ba0c7cb4ba3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourFlashBehaviour
+  _renderer: {fileID: 0}
+  OnColour: {r: 1, g: 0, b: 0, a: 1}
+  OffColour: {r: 1, g: 1, b: 1, a: 1}
+  TargetIndicationFlashPeriod: 0.2
+  TargetIndicationFlashCount: 3
+  SelectionFlashPeriod: 0.1
+  SelectionFlashCount: 5
 --- !u!1001 &2845243858232944863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1653,13 +1745,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2266000171058137293, guid: b9fb44a42c241b641a953a29eec4ce05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2845243858232944867}
+    - targetCorrespondingSourceObject: {fileID: 2266000171058137293, guid: b9fb44a42c241b641a953a29eec4ce05, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2845243858232944866}
   m_SourcePrefab: {fileID: 100100000, guid: b9fb44a42c241b641a953a29eec4ce05, type: 3}
 --- !u!224 &2845243858232944864 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2120394986218449827, guid: b9fb44a42c241b641a953a29eec4ce05, type: 3}
   m_PrefabInstance: {fileID: 2845243858232944863}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2845243858232944865 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2266000171058137293, guid: b9fb44a42c241b641a953a29eec4ce05, type: 3}
+  m_PrefabInstance: {fileID: 2845243858232944863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2845243858232944866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845243858232944865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ec7857c29061f41b799860fd810aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourToggleStimulusPresenter
+  _colourFlashBehaviour: {fileID: 2845243858232944867}
+--- !u!114 &2845243858232944867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845243858232944865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af506a949d83d646b14ba0c7cb4ba3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourFlashBehaviour
+  _renderer: {fileID: 0}
+  OnColour: {r: 1, g: 0, b: 0, a: 1}
+  OffColour: {r: 1, g: 1, b: 1, a: 1}
+  TargetIndicationFlashPeriod: 0.2
+  TargetIndicationFlashCount: 3
+  SelectionFlashPeriod: 0.1
+  SelectionFlashCount: 5
 --- !u!1001 &5073166590045706342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1755,13 +1890,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6616144225847881408, guid: 759eee1a26aaa7244bb0509b5acc8a52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5073166590045706345}
+    - targetCorrespondingSourceObject: {fileID: 6616144225847881408, guid: 759eee1a26aaa7244bb0509b5acc8a52, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5073166590045706346}
   m_SourcePrefab: {fileID: 100100000, guid: 759eee1a26aaa7244bb0509b5acc8a52, type: 3}
 --- !u!224 &5073166590045706343 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7378824720382223295, guid: 759eee1a26aaa7244bb0509b5acc8a52, type: 3}
   m_PrefabInstance: {fileID: 5073166590045706342}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &5073166590045706344 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6616144225847881408, guid: 759eee1a26aaa7244bb0509b5acc8a52, type: 3}
+  m_PrefabInstance: {fileID: 5073166590045706342}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5073166590045706345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073166590045706344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af506a949d83d646b14ba0c7cb4ba3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourFlashBehaviour
+  _renderer: {fileID: 0}
+  OnColour: {r: 1, g: 0, b: 0, a: 1}
+  OffColour: {r: 1, g: 1, b: 1, a: 1}
+  TargetIndicationFlashPeriod: 0.2
+  TargetIndicationFlashCount: 3
+  SelectionFlashPeriod: 0.1
+  SelectionFlashCount: 5
+--- !u!114 &5073166590045706346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5073166590045706344}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ec7857c29061f41b799860fd810aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourToggleStimulusPresenter
+  _colourFlashBehaviour: {fileID: 5073166590045706345}
 --- !u!1001 &7387819566877532637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1857,13 +2035,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1281604226410039391, guid: 48abc43264450f747af9c8dc2875f1c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7387819566877532641}
+    - targetCorrespondingSourceObject: {fileID: 1281604226410039391, guid: 48abc43264450f747af9c8dc2875f1c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7387819566877532640}
   m_SourcePrefab: {fileID: 100100000, guid: 48abc43264450f747af9c8dc2875f1c2, type: 3}
 --- !u!224 &7387819566877532638 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2409259121664364817, guid: 48abc43264450f747af9c8dc2875f1c2, type: 3}
   m_PrefabInstance: {fileID: 7387819566877532637}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7387819566877532639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1281604226410039391, guid: 48abc43264450f747af9c8dc2875f1c2, type: 3}
+  m_PrefabInstance: {fileID: 7387819566877532637}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7387819566877532640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7387819566877532639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ec7857c29061f41b799860fd810aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourToggleStimulusPresenter
+  _colourFlashBehaviour: {fileID: 7387819566877532641}
+--- !u!114 &7387819566877532641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7387819566877532639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af506a949d83d646b14ba0c7cb4ba3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourFlashBehaviour
+  _renderer: {fileID: 0}
+  OnColour: {r: 1, g: 0, b: 0, a: 1}
+  OffColour: {r: 1, g: 1, b: 1, a: 1}
+  TargetIndicationFlashPeriod: 0.2
+  TargetIndicationFlashCount: 3
+  SelectionFlashPeriod: 0.1
+  SelectionFlashCount: 5
 --- !u!1001 &8630040517244018736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1959,13 +2180,56 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3956638781805318743, guid: 6eaa953eaff5f8944aa0ca94a0b5fc3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8630040517244018740}
+    - targetCorrespondingSourceObject: {fileID: 3956638781805318743, guid: 6eaa953eaff5f8944aa0ca94a0b5fc3b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8630040517244018739}
   m_SourcePrefab: {fileID: 100100000, guid: 6eaa953eaff5f8944aa0ca94a0b5fc3b, type: 3}
 --- !u!224 &8630040517244018737 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1267780502975410885, guid: 6eaa953eaff5f8944aa0ca94a0b5fc3b, type: 3}
   m_PrefabInstance: {fileID: 8630040517244018736}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8630040517244018738 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3956638781805318743, guid: 6eaa953eaff5f8944aa0ca94a0b5fc3b, type: 3}
+  m_PrefabInstance: {fileID: 8630040517244018736}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8630040517244018739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630040517244018738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0ec7857c29061f41b799860fd810aa2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourToggleStimulusPresenter
+  _colourFlashBehaviour: {fileID: 8630040517244018740}
+--- !u!114 &8630040517244018740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8630040517244018738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9af506a949d83d646b14ba0c7cb4ba3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Stimulus.Presentation.Standard.ColourFlashBehaviour
+  _renderer: {fileID: 0}
+  OnColour: {r: 1, g: 0, b: 0, a: 1}
+  OffColour: {r: 1, g: 1, b: 1, a: 1}
+  TargetIndicationFlashPeriod: 0.2
+  TargetIndicationFlashCount: 3
+  SelectionFlashPeriod: 0.1
+  SelectionFlashCount: 5
 --- !u!1001 &8883426584022466369
 PrefabInstance:
   m_ObjectHideFlags: 0
