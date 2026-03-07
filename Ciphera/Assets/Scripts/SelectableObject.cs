@@ -3,17 +3,15 @@ using UnityEngine;
 public class SelectableObject : MonoBehaviour
 {
     private GameManager gameManager;
-    private SpriteRenderer sr;
 
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
-        sr = GetComponent<SpriteRenderer>();
     }
 
     void OnMouseDown()
     {
-        Debug.Log("Clicked: " + gameObject.name);
-        gameManager.PlaceObject(sr.sprite);
+        // Pass the actual prefab instead of an index
+        gameManager.PlaceObject(gameObject);
     }
 }
