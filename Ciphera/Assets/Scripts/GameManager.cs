@@ -43,13 +43,13 @@ public class GameManager : MonoBehaviour
         {
             GameObject newRow = new GameObject("GuessRow_" + row);
             newRow.transform.SetParent(guessRowParent);
-            newRow.transform.localPosition = new Vector3(0, -row * 1f, 0); // vertically stacked
+            newRow.transform.localPosition = new Vector3(0, -row * 1.5f, 0); // vertically stacked
 
             for (int i = 0; i < slotsPerRow; i++)
             {
                 GameObject slot = Instantiate(guessSlotPrefab, newRow.transform);
                 slot.name = "Slot_" + i;
-                slot.transform.localPosition = new Vector3(i * 1f, 0, 0);
+                slot.transform.localPosition = new Vector3(i * 1.5f, 0, 0);
             }
 
             // Only assign the first row to currentRowSlots
@@ -115,40 +115,46 @@ public class GameManager : MonoBehaviour
     }
 
     void CheckGuess()
+{
+    bool[] answerUsed = new bool[answerSequence.Length];
+
+    for (int i = 0; i < playerGuess.Length; i++)
     {
-        int correctPos = 0;
-        int correctTile = 0;
+        // safety check
+        if (currentRowSlots[i].childCount == 0)
+            continue;
 
-        bool[] used = new bool[answerSequence.Length];
+        // get the tile inside the slot
+        Transform tile = currentRowSlots[i].GetChild(0);
+        SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
 
-        // Correct position
-        for (int i = 0; i < slotsPerRow; i++)
-            if (playerGuess[i] == answerSequence[i])
-            {
-                correctPos++;
-                used[i] = true;
-            }
-
-        // Correct tile, wrong position
-        for (int i = 0; i < slotsPerRow; i++)
+        if (playerGuess[i] == answerSequence[i])
         {
-            if (playerGuess[i] == answerSequence[i])
-                continue;
+            tileRenderer.color = new Color32(64, 225, 137, 225); // green
+            answerUsed[i] = true;
+        }
+        else
+        {
+            bool found = false;
 
             for (int j = 0; j < answerSequence.Length; j++)
             {
-                if (!used[j] && playerGuess[i] == answerSequence[j])
+                if (!answerUsed[j] && playerGuess[i] == answerSequence[j])
                 {
-                    correctTile++;
-                    used[j] = true;
+                    tileRenderer.color = new Color32(255, 245, 157, 225); // yellow
+                    answerUsed[j] = true;
+                    found = true;
                     break;
                 }
             }
-        }
 
-        Debug.Log("Correct Position: " + correctPos);
-        Debug.Log("Correct Tile Wrong Place: " + correctTile);
+            if (!found)
+            {
+                tileRenderer.color = new Color32(240, 100, 75, 225); // red
+            }
+        }
     }
+}
 
     void AdvanceRow()
     {
