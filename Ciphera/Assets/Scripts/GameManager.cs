@@ -3,56 +3,89 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Header("Prefabs and Answer")]
-    public GameObject[] optionPrefabs;        // Drag your clickable prefabs here
-    public GameObject[] guessSlots;           // Assign your guess slot transforms
-    public Sprite[] answerSequence;           // Automatically generated answer
-    public Sprite[] playerGuess;              // Current player guesses
+    public GameObject[] optionPrefabs;        // Your clickable prefabs
+    public GameObject guessSlotPrefab;        // Prefab for one slot (empty square)
+    public Transform guessRowParent;          // Parent for all guess rows
+    public int slotsPerRow = 4;               // How many tiles per row
+    public int maxRows = 6;                   // How many guess rows player can use
 
-    private int currentSlot = 0;
+    private Sprite[] answerSequence;          // Random answer sequence
+    private Sprite[] playerGuess;             // Current guess row
+    private Transform[] currentRowSlots;      // Current row’s slots
+    private int currentSlot = 0;              // Index in current row
 
     void Start()
     {
-        // Initialize arrays based on the number of guess slots
-        answerSequence = new Sprite[guessSlots.Length];
-        playerGuess = new Sprite[guessSlots.Length];
+        GenerateAnswerSequence();
+        CreateRows();  // Create all rows under guessRowParent
+    }
 
-        // Generate random answer sequence
-        for (int i = 0; i < answerSequence.Length; i++)
+    void GenerateAnswerSequence()
+    {
+        answerSequence = new Sprite[slotsPerRow];
+
+        for (int i = 0; i < slotsPerRow; i++)
         {
             Sprite sprite = optionPrefabs[Random.Range(0, optionPrefabs.Length)]
                                 .GetComponent<SpriteRenderer>().sprite;
             answerSequence[i] = sprite;
         }
 
-        // Debug print
         string answerStr = "";
         foreach (var s in answerSequence)
             answerStr += s.name + " ";
         Debug.Log("Answer sequence: " + answerStr);
     }
 
-    // Called by clicking a prefab
-    // Replace PlaceObject(int prefabIndex) with this:
-public void PlaceObject(GameObject prefab)
-{
-    if (currentSlot >= guessSlots.Length)
+    void CreateRows()
     {
-        Debug.Log("Guess row full!");
-        return;
+        for (int row = 0; row < maxRows; row++)
+        {
+            GameObject newRow = new GameObject("GuessRow_" + row);
+            newRow.transform.SetParent(guessRowParent);
+            newRow.transform.localPosition = new Vector3(0, -row * 1.5f, 0); // vertically stacked
+
+            for (int i = 0; i < slotsPerRow; i++)
+            {
+                GameObject slot = Instantiate(guessSlotPrefab, newRow.transform);
+                slot.name = "Slot_" + i;
+                slot.transform.localPosition = new Vector3(i * 1.5f, 0, 0);
+            }
+
+            // Only assign the first row to currentRowSlots
+            if (row == 0)
+            {
+                currentRowSlots = newRow.GetComponentsInChildren<Transform>();
+                // Filter out the row itself
+                Transform[] temp = new Transform[slotsPerRow];
+                int idx = 0;
+                foreach (var t in currentRowSlots)
+                    if (t != newRow.transform)
+                        temp[idx++] = t;
+                currentRowSlots = temp;
+
+                playerGuess = new Sprite[slotsPerRow];
+            }
+        }
     }
 
-    // Instantiate the prefab directly
-    GameObject newObject = Instantiate(prefab, guessSlots[currentSlot].transform);
-    newObject.transform.localPosition = Vector3.zero;
-    newObject.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
+    // Called by clicking a prefab
+    public void PlaceObject(GameObject prefab)
+    {
+        if (currentSlot >= slotsPerRow)
+        {
+            Debug.Log("Guess row full!");
+            return;
+        }
 
-    // Store the sprite for checking
-    playerGuess[currentSlot] = newObject.GetComponent<SpriteRenderer>().sprite;
+        GameObject newObject = Instantiate(prefab, currentRowSlots[currentSlot]);
+        newObject.transform.localPosition = Vector3.zero;
+        newObject.transform.localScale = Vector3.one * 0.35f;
 
-    currentSlot++;
-}
+        playerGuess[currentSlot] = newObject.GetComponent<SpriteRenderer>().sprite;
+        currentSlot++;
+    }
 
-    // Delete last placed object
     public void DeleteLast()
     {
         if (currentSlot <= 0)
@@ -62,69 +95,89 @@ public void PlaceObject(GameObject prefab)
         }
 
         currentSlot--;
-        Transform slot = guessSlots[currentSlot].transform;
-
+        Transform slot = currentRowSlots[currentSlot];
         if (slot.childCount > 0)
             Destroy(slot.GetChild(0).gameObject);
 
         playerGuess[currentSlot] = null;
     }
 
-    // Submit the guess
     public void SubmitGuess()
     {
-        if (currentSlot < guessSlots.Length)
+        if (currentSlot < slotsPerRow)
         {
             Debug.Log("Fill all slots first!");
             return;
         }
 
         CheckGuess();
+        AdvanceRow();
     }
 
-    // Compare player guess to answer
     void CheckGuess()
+{
+    bool[] answerUsed = new bool[answerSequence.Length];
+
+    for (int i = 0; i < playerGuess.Length; i++)
     {
-        int correctPosition = 0;
-        int correctSpriteWrongPlace = 0;
+        // safety check
+        if (currentRowSlots[i].childCount == 0)
+            continue;
 
-        bool[] answerUsed = new bool[answerSequence.Length];
+        // get the tile inside the slot
+        Transform tile = currentRowSlots[i].GetChild(0);
+        SpriteRenderer tileRenderer = tile.GetComponent<SpriteRenderer>();
 
-        // Correct positions
-        for (int i = 0; i < playerGuess.Length; i++)
+        if (playerGuess[i] == answerSequence[i])
         {
-            if (playerGuess[i] == answerSequence[i])
-            {
-                correctPosition++;
-                answerUsed[i] = true;
-            }
+            tileRenderer.color = new Color32(64, 225, 137, 225); // green
+            answerUsed[i] = true;
         }
-
-        // Correct sprite, wrong position
-        for (int i = 0; i < playerGuess.Length; i++)
+        else
         {
-            if (playerGuess[i] == answerSequence[i])
-                continue;
+            bool found = false;
 
             for (int j = 0; j < answerSequence.Length; j++)
             {
                 if (!answerUsed[j] && playerGuess[i] == answerSequence[j])
                 {
-                    correctSpriteWrongPlace++;
+                    tileRenderer.color = new Color32(255, 245, 157, 225); // yellow
                     answerUsed[j] = true;
+                    found = true;
                     break;
                 }
             }
+
+            if (!found)
+            {
+                tileRenderer.color = new Color32(240, 100, 75, 225); // red
+            }
+        }
+    }
+}
+
+    void AdvanceRow()
+    {
+        // Move to next row if available
+        Transform parentRow = currentRowSlots[0].parent;
+        int nextRowIndex = parentRow.GetSiblingIndex() + 1;
+
+        if (nextRowIndex >= guessRowParent.childCount)
+        {
+            Debug.Log("No more rows!");
+            return;
         }
 
-        Debug.Log("Correct Position: " + correctPosition);
-        Debug.Log("Correct Sprite Wrong Place: " + correctSpriteWrongPlace);
-    }
+        Transform nextRow = guessRowParent.GetChild(nextRowIndex);
+        currentRowSlots = nextRow.GetComponentsInChildren<Transform>();
+        Transform[] temp = new Transform[slotsPerRow];
+        int idx = 0;
+        foreach (var t in currentRowSlots)
+            if (t != nextRow)
+                temp[idx++] = t;
+        currentRowSlots = temp;
 
-    // Optional: Reset for a new row
-    public void ResetGuessRow()
-    {
-        while (currentSlot > 0)
-            DeleteLast();
+        playerGuess = new Sprite[slotsPerRow];
+        currentSlot = 0;
     }
 }
