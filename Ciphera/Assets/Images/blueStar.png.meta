@@ -1,17 +1,10 @@
 fileFormatVersion: 2
-guid: c15013f461b2269469b0cbcd12d16e37
-AssetOrigin:
-  serializedVersion: 1
-  productId: 298577
-  packageName: Space Game GUI kit
-  packageVersion: 1.0
-  assetPath: Assets/Space_Exploration_GUI_Kit/Icons/alien-128.png
-  uploadId: 700894
+guid: 21ac02857db479b40b564ba3d6569c9d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2142893373678795169
-    second: alien-128_0
+      213: 3650040781408770095
+    second: blueStar_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -107,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: alien-128_0
+      name: blueStar_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 8
-        width: 100
-        height: 112
+        x: 43
+        y: 32
+        width: 426
+        height: 430
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a9b9a97b261dbd10800000000000000
-      internalID: 2142893373678795169
+      spriteID: f281f8f70cc87a230800000000000000
+      internalID: 3650040781408770095
       vertices: []
       indices: 
       edges: []
@@ -142,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      alien-128_0: 2142893373678795169
+      blueStar_0: 3650040781408770095
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

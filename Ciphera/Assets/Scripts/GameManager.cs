@@ -38,13 +38,16 @@ public class GameManager : MonoBehaviour
             Debug.Log("Guess row full");
             return;
         }
-
         GameObject newObject = new GameObject("GuessItem");
 
         SpriteRenderer sr = newObject.AddComponent<SpriteRenderer>();
         sr.sprite = selectedSprite;
+        
+        newObject.layer = LayerMask.NameToLayer("Ignore Raycast"); // prevents it from blocking clicks
 
-        newObject.transform.position = guessSlots[currentSlot].position;
+        newObject.transform.SetParent(guessSlots[currentSlot]);
+        newObject.transform.localPosition = Vector3.zero;
+        newObject.transform.localScale = new Vector3(0.35f, 0.35f, 0.35f);
         playerGuess[currentSlot] = selectedSprite;
 
         currentSlot++;

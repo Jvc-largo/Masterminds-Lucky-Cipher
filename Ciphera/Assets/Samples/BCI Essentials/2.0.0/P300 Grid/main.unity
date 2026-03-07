@@ -303,7 +303,7 @@ MonoBehaviour:
   - {fileID: 612595517}
   - {fileID: 322530437}
   _presenterPrefab: {fileID: 8885046772263613569, guid: bbe91bd5ea72f514a97a782f73e8e759, type: 3}
-  _rowCount: 2
+  _rowCount: 1
   _columnCount: 3
   _spacing: {x: 2, y: 2}
 --- !u!114 &362329383
@@ -807,9 +807,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetIndicationBehaviour: {fileID: 362329384}
   _trialBehaviour: {fileID: 1090924884}
-  TargetIndex: 0
+  TargetIndex: 2
   TargetIndicationPeriod: 3
-  PersistTargetIndication: 0
+  PersistTargetIndication: 1
   PreTrialTime: 0.5
   PostTrialTime: 0
   SelectionCount: 8

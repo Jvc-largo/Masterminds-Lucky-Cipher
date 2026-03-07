@@ -1,17 +1,10 @@
 fileFormatVersion: 2
-guid: 2601c1a8227f38743bfdf3215b3a7013
-AssetOrigin:
-  serializedVersion: 1
-  productId: 298577
-  packageName: Space Game GUI kit
-  packageVersion: 1.0
-  assetPath: Assets/Space_Exploration_GUI_Kit/Icons/astronaut-128.png
-  uploadId: 700894
+guid: e05db643a643f6a4f92ea3c5d848736e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6696163737585504795
-    second: astronaut-128_0
+      213: -2104633468796822012
+    second: yellowPentagon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -79,7 +72,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 4
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 2048
+    maxTextureSize: 1024
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -107,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: astronaut-128_0
+      name: yellowPentagon_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 13
-        width: 120
-        height: 102
+        x: 43
+        y: 32
+        width: 426
+        height: 430
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -122,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5ed2d57fe827213a0800000000000000
-      internalID: -6696163737585504795
+      spriteID: 40e97fdc207dac2e0800000000000000
+      internalID: -2104633468796822012
       vertices: []
       indices: 
       edges: []
@@ -142,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      astronaut-128_0: -6696163737585504795
+      yellowPentagon_0: -2104633468796822012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

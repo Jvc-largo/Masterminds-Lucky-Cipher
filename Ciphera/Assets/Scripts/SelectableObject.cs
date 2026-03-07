@@ -13,6 +13,7 @@ public class SelectableObject : MonoBehaviour
 
     void OnMouseDown()
     {
+        Debug.Log("Clicked: " + gameObject.name);
         gameManager.PlaceObject(sr.sprite);
     }
 }
