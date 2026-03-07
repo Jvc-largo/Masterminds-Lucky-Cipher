@@ -37,37 +37,45 @@ public class GameManager : MonoBehaviour
         Debug.Log("Answer sequence: " + answerStr);
     }
 
-    void CreateRows()
+[Header("Row & Slot Layout")]
+public Vector2 startPosition = new Vector2(0f, 3f); // X, Y position of the first row
+public Vector2 spacing = new Vector2(1.5f, 1.5f);   // X spacing between slots, Y spacing between rows
+
+void CreateRows()
+{
+    for (int row = 0; row < maxRows; row++)
     {
-        for (int row = 0; row < maxRows; row++)
+        // Create parent object for the row
+        GameObject newRow = new GameObject("GuessRow_" + row);
+        newRow.transform.SetParent(guessRowParent);
+        newRow.transform.localPosition = new Vector3(startPosition.x, startPosition.y - row * spacing.y, 0);
+        newRow.transform.localScale = Vector3.one;
+
+        // Create slots inside the row
+        for (int i = 0; i < slotsPerRow; i++)
         {
-            GameObject newRow = new GameObject("GuessRow_" + row);
-            newRow.transform.SetParent(guessRowParent);
-            newRow.transform.localPosition = new Vector3(0, -row * 1.5f, 0); // vertically stacked
+            GameObject slot = Instantiate(guessSlotPrefab, newRow.transform);
+            slot.name = "Slot_" + i;
+            slot.transform.localPosition = new Vector3(startPosition.x + i * spacing.x, 0, 0);
+            slot.transform.localScale = Vector3.one;
+        }
 
-            for (int i = 0; i < slotsPerRow; i++)
-            {
-                GameObject slot = Instantiate(guessSlotPrefab, newRow.transform);
-                slot.name = "Slot_" + i;
-                slot.transform.localPosition = new Vector3(i * 1.5f, 0, 0);
-            }
+        // Assign first row to currentRowSlots so player can start guessing
+        if (row == 0)
+        {
+            currentRowSlots = newRow.GetComponentsInChildren<Transform>();
+            Transform[] temp = new Transform[slotsPerRow];
+            int idx = 0;
+            foreach (var t in currentRowSlots)
+                if (t != newRow.transform)
+                    temp[idx++] = t;
+            currentRowSlots = temp;
 
-            // Only assign the first row to currentRowSlots
-            if (row == 0)
-            {
-                currentRowSlots = newRow.GetComponentsInChildren<Transform>();
-                // Filter out the row itself
-                Transform[] temp = new Transform[slotsPerRow];
-                int idx = 0;
-                foreach (var t in currentRowSlots)
-                    if (t != newRow.transform)
-                        temp[idx++] = t;
-                currentRowSlots = temp;
-
-                playerGuess = new Sprite[slotsPerRow];
-            }
+            playerGuess = new Sprite[slotsPerRow];
         }
     }
+}
+
 
     // Called by clicking a prefab
     public void PlaceObject(GameObject prefab)
