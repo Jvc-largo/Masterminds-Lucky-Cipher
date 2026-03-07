@@ -220,8 +220,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bf249683faf91e4fb308c079bb5a6f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Behaviours.Training.AutomatedTrainingBehaviour
-  _targetIndicationBehaviour: {fileID: 0}
-  _trialBehaviour: {fileID: 0}
+  _targetIndicationBehaviour: {fileID: 1523989240}
+  _trialBehaviour: {fileID: 2074741643}
   TargetIndex: 0
   TargetIndicationPeriod: 3
   PersistTargetIndication: 0
@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Bci4Kids.BciEssentials::BCIEssentials.Behaviours.BCIController
   _trialBehaviour: {fileID: 2074741643}
-  _trainingBehaviour: {fileID: 0}
+  _trainingBehaviour: {fileID: 164143056}
 --- !u!4 &1135408158
 Transform:
   m_ObjectHideFlags: 0
